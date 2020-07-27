@@ -1,7 +1,10 @@
-from tkinter import *
-from sigaaRPA import sigaaRPA
+import threading
+import sys
+from tkinter import Button, Frame
+from Sigaa_Rpa import Sigaa
 
 class App(Frame):
+
   def __init__(self, master=None):
     Frame.__init__(self, master)
     self.pack()
@@ -9,8 +12,18 @@ class App(Frame):
     self.createWidgets()
 
   def createWidgets(self):
-    Button(self, text="SigaaBot", command=sigaaRPA).pack()
-    Button(self, text="QUIT", command=self.quit).pack()
+    Button(self, text="SigaaBot", command=self.startBot).pack()
+    Button(self, text="Terminate task", command=self.terminateBot).pack()
+    Button(self, text="QUIT", command=self.quitApp).pack()
 
-  def notaSigaa(self):
-    print("Notas mi ermano")
+  def startBot(self):
+    self.bot = Sigaa()
+    botThread = threading.Thread(target=self.bot.sigaaRPA, daemon=True)
+    botThread.start()
+
+  def terminateBot(self):
+    self.bot.terminate()
+
+  def quitApp(self):
+    self.bot.terminate()
+    sys.exit()

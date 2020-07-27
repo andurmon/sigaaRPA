@@ -16,9 +16,11 @@ class Sigaa():
     r.timeout(30)
 
     while(self.state > 0):
+
       if self.terminateBot:
         r.close()
         break
+
       elif self.state == 1:
         # use url('your_url') to go to web page, url() returns current URL
         r.url('https://sigaa.upb.edu.co/ssomanager/c/SSB')
@@ -80,6 +82,6 @@ class Sigaa():
         # use wait() to wait for a number of seconds
         # default wait() is 5 seconds
         r.wait(5)
-        self.state = 0
+        self.terminateBot = True
       elif self.state == 10:
         r.dom('history.back()')
