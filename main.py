@@ -1,4 +1,4 @@
-from app import App
+from App import App
 from tkinter import Tk
 
 root = Tk()

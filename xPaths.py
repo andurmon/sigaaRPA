@@ -5,5 +5,5 @@ class XPaths:
   estudiantes = '//button[@id="bmenu--P_StuMainMnu___UID2"]'
   seguimieto = '//*[@id="bmenu--P_AdminMnu___UID4"]'
   calif = '//*[@id="contentItem22"]'
-  semestre = '//*[@id="term_id"]'
+  semester = '//*[@id="term_id"]'
   enviar = '//*[@id="id____UID6"]'
